@@ -115,7 +115,6 @@ export default function Universe() {
       <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
         <Suspense fallback={null}>
           <UniverseContent />
-          <LoadingManager setIsLoading={setIsLoading} />
         </Suspense>
       </Canvas>
     </>
