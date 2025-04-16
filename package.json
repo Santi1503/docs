@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "install": "npm install --force"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@react-spring/three": "^9.7.5",
@@ -18,16 +17,16 @@
     "@tailwindcss/vite": "^4.1.4",
     "framer-motion": "^12.7.3",
     "postcss": "^8.5.3",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0",
     "tailwindcss": "^4.1.4",
     "three": "^0.175.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
-    "@types/react": "^18.0.10",
-    "@types/react-dom": "^18.0.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.22.0",
     "eslint-plugin-react-hooks": "^5.2.0",
