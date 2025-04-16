@@ -1,27 +1,62 @@
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import Universe from "../components/3d/Universe";
+import { motion, AnimatePresence } from "framer-motion";
 
-const worlds = [
-  { name: "Frontend", color: "from-pink-400 to-pink-600" },
-  { name: "Backend", color: "from-blue-400 to-blue-600" },
-  { name: "Bases de Datos", color: "from-green-400 to-green-600" },
-  { name: "Más tecnologías", color: "from-yellow-400 to-yellow-600" },
-];
+const letterAnimation = {
+  initial: { y: 100, opacity: 0 },
+  animate: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.05,
+      duration: 0.5,
+      type: "spring",
+      damping: 10,
+      stiffness: 100
+    }
+  })
+};
 
 export default function Home() {
-  const navigate = useNavigate();
+  const title = "Explora mi mundo tech";
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Fondo 3D */}
-      <div className="absolute inset-0 z-0">
-        <Universe />
-      </div>
-
-      {/* Contenido UI encima */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
-      </div>
+    <div className="relative w-full h-screen overflow-hidden bg-[#020617]">
+      <Universe />
+      
+      {/* Título animado */}
+      <AnimatePresence>
+        <div className="absolute top-0 left-0 w-full z-10 pt-12 px-4">
+          <div className="text-center">
+            <div className="relative inline-block">
+              {title.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterAnimation}
+                  initial="initial"
+                  animate="animate"
+                  className={`inline-block text-5xl md:text-7xl font-bold 
+                             ${char === " " ? "mr-4" : ""}
+                             bg-gradient-to-r from-white to-blue-200
+                             text-transparent bg-clip-text
+                             drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+            
+            {/* Línea decorativa animada */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="h-0.5 bg-gradient-to-r from-transparent via-white to-transparent 
+                       max-w-2xl mx-auto mt-4"
+            />
+          </div>
+        </div>
+      </AnimatePresence>
     </div>
   );
 }
