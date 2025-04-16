@@ -1,0 +1,7 @@
+{
+    "Inicializar proyecto": "Puedes inicializar un proyecto de React usando Vite:\n\n```bash\nnpm create vite@latest my-app --template react\ncd my-app\nnpm install\nnpm run dev\n```",
+    "Instalar librerías": "Para estilos y animaciones básicas puedes instalar:\n\n```bash\nnpm install tailwindcss framer-motion react-router-dom\n```",
+    "Estructura básica": "La estructura típica incluye `App.jsx`, `main.jsx`, una carpeta de `components/` y `pages/`.",
+    "Comandos útiles": "- `npm run dev`: inicia el servidor local\n- `npm run build`: crea el build de producción",
+    "Tips & extras": "- Usa `useState`, `useEffect`, y `useContext` frecuentemente.\n- Descompón tu UI en componentes reutilizables."
+  }
