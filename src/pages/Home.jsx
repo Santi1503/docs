@@ -17,7 +17,8 @@ const letterAnimation = {
 };
 
 export default function Home() {
-  const title = "Explora mi mundo tech";
+  const title = "Explora mi";
+  const title2 = "mundo tech";
   
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[#020617]">
@@ -37,6 +38,24 @@ export default function Home() {
             
             <div className="relative inline-block p-4">
               {title.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterAnimation}
+                  initial="initial"
+                  animate="animate"
+                  className={`inline-block text-4xl sm:text-5xl md:text-6xl font-bold
+                    ${char === " " ? "mr-2 sm:mr-4" : ""}
+                    bg-gradient-to-r from-white to-blue-200
+                    text-transparent bg-clip-text
+                    drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]`}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+            <div className="relative inline-block p-4">
+              {title2.split("").map((char, i) => (
                 <motion.span
                   key={i}
                   custom={i}
