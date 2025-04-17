@@ -13,69 +13,70 @@ function UniverseContent() {
   const navigate = useNavigate();
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
-  useVerticalScrollCamera(isMobile)
+  // Usa el hook mejorado
+  useVerticalScrollCamera(isMobile);
 
   const planets = isMobile
-  ? [
-      {
-        name: "Frontend",
-        position: [0, 2, 0],
-        scale: 0.5,
-        texture: "/textures/frontend.png",
-        id: "frontend"
-      },
-      {
-        name: "Backend",
-        position: [0, -3, 0],
-        scale: 0.5,
-        texture: "/textures/backend.png",
-        id: "backend"
-      },
-      {
-        name: "Bases de Datos",
-        position: [0, -8, 0],
-        scale: 0.5,
-        texture: "/textures/db.png",
-        id: "bases-de-datos"
-      },
-      {
-        name: "Más tecnologías",
-        position: [0, -12, 0],
-        scale: 0.5,
-        texture: "/textures/moretech.png",
-        id: "mas-tecnologias"
-      },
-    ]
-  : [
-      {
-        name: "Frontend",
-        position: [-8 , -2, 0],
-        scale: 1,
-        texture: "/textures/frontend.png",
-        id: "frontend"
-      },
-      {
-        name: "Backend",
-        position: [-3, -2, 0],
-        scale: 1,
-        texture: "/textures/backend.png",
-        id: "backend"
-      },
-      {
-        name: "Bases de Datos",
-        position: [2, -2, 0],
-        scale: 1,
-        texture: "/textures/db.png",
-        id: "bases-de-datos"
-      },
-      {
-        name: "Más tecnologías",
-        position: [7, -2, 0],
-        scale: 1,
-        texture: "/textures/moretech.png",
-        id: "mas-tecnologias"
-      },
-    ];
+    ? [
+        {
+          name: "Frontend",
+          position: [0, 0, 0],
+          scale: 0.5,
+          texture: "/textures/frontend.png",
+          id: "frontend"
+        },
+        {
+          name: "Backend",
+          position: [0, -5, 0],
+          scale: 0.5,
+          texture: "/textures/backend.png",
+          id: "backend"
+        },
+        {
+          name: "Bases de Datos",
+          position: [0, -10, 0],
+          scale: 0.5,
+          texture: "/textures/db.png",
+          id: "bases-de-datos"
+        },
+        {
+          name: "Más tecnologías",
+          position: [0, -15, 0],
+          scale: 0.5,
+          texture: "/textures/moretech.png",
+          id: "mas-tecnologias"
+        },
+      ]
+    : [
+        {
+          name: "Frontend",
+          position: [-8 , -2, 0],
+          scale: 1,
+          texture: "/textures/frontend.png",
+          id: "frontend"
+        },
+        {
+          name: "Backend",
+          position: [-3, -2, 0],
+          scale: 1,
+          texture: "/textures/backend.png",
+          id: "backend"
+        },
+        {
+          name: "Bases de Datos",
+          position: [2, -2, 0],
+          scale: 1,
+          texture: "/textures/db.png",
+          id: "bases-de-datos"
+        },
+        {
+          name: "Más tecnologías",
+          position: [7, -2, 0],
+          scale: 1,
+          texture: "/textures/moretech.png",
+          id: "mas-tecnologias"
+        },
+      ];
 
   const handlePlanetClick = (planetName) => {
     const planet = planets.find(p => p.name === planetName);
@@ -120,7 +121,7 @@ function UniverseContent() {
       <OrbitControls 
         enableZoom={false} 
         enablePan={false}
-        enabled={!selectedPlanet}
+        enabled={!selectedPlanet && !isMobile} // Deshabilita OrbitControls en móvil
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
         maxAzimuthAngle={0}
@@ -137,7 +138,7 @@ function LoadingManager({ setIsLoading }) {
     if (loaded && progress === 100) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 500); // Pequeño retraso para asegurar que todo esté renderizado
+      }, 500);
     }
   }, [progress, loaded, setIsLoading]);
 
@@ -146,6 +147,7 @@ function LoadingManager({ setIsLoading }) {
 
 export default function Universe() {
   const [isLoading, setIsLoading] = useState(true);
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -156,6 +158,16 @@ export default function Universe() {
           <LoadingManager setIsLoading={setIsLoading} />
         </Suspense>
       </Canvas>
+      
+      {/* Indicador de scroll en móvil */}
+      {isMobile && !isLoading && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-70">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+          </svg>
+          <span className="text-sm font-light block text-center">Desliza</span>
+        </div>
+      )}
     </>
   );
 }
