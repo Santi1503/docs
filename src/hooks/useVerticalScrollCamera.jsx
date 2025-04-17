@@ -1,52 +1,58 @@
 import { useThree } from "@react-three/fiber";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function useVerticalScrollCamera(enabled = true) {
-  const state = useThree();
-  const [touchStartY, setTouchStartY] = useState(null);
+  const { camera } = useThree();
+  const yPositionRef = useRef(0);
+  const touchStartYRef = useRef(null);
   
   useEffect(() => {
-    if (!enabled || !state?.camera) return;
+    if (!enabled) return;
     
-    const { camera } = state;
-    let cameraY = 0;
+    // Posición inicial
+    yPositionRef.current = camera.position.y;
     
+    // Manejo de eventos de rueda para desktop
     const handleWheel = (e) => {
-      e.preventDefault();
-      const delta = e.deltaY || 0;
-      cameraY -= delta * 0.005;
-      cameraY = Math.max(-15, Math.min(cameraY, 5)); // Ajusta este rango según sea necesario
-      camera.position.y = cameraY;
+      const delta = e.deltaY;
+      yPositionRef.current -= delta * 0.005;
+      yPositionRef.current = Math.max(-15, Math.min(yPositionRef.current, 5));
+      camera.position.y = yPositionRef.current;
     };
     
+    // Manejo de eventos táctiles para móvil
     const handleTouchStart = (e) => {
-      setTouchStartY(e.touches[0].clientY);
+      touchStartYRef.current = e.touches[0].clientY;
     };
     
     const handleTouchMove = (e) => {
-      if (touchStartY === null) return;
+      if (touchStartYRef.current === null) return;
       
+      // Calculamos cuánto se ha movido el dedo
       const touchY = e.touches[0].clientY;
-      const delta = touchStartY - touchY;
+      const delta = touchStartYRef.current - touchY;
       
-      cameraY += delta * 0.01; // Ajusta la sensibilidad
-      cameraY = Math.max(-15, Math.min(cameraY, 5));
-      camera.position.y = cameraY;
+      // Actualizamos la posición de la cámara
+      yPositionRef.current += delta * 0.02; // Mayor sensibilidad para móviles
+      yPositionRef.current = Math.max(-15, Math.min(yPositionRef.current, 5));
+      camera.position.y = yPositionRef.current;
       
-      setTouchStartY(touchY);
+      // Actualizamos la posición de inicio para el próximo movimiento
+      touchStartYRef.current = touchY;
+      
+      // Prevenimos el scroll del navegador
+      e.preventDefault();
     };
     
-    // Eventos de rueda (desktop)
+    // Registramos los eventos
     window.addEventListener("wheel", handleWheel, { passive: false });
-    
-    // Eventos táctiles (móvil)
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false }); // Importante usar passive: false
     
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [state, enabled, touchStartY]);
+  }, [camera, enabled]);
 }

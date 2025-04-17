@@ -118,15 +118,17 @@ function UniverseContent() {
         </group>
       ))}
 
-      <OrbitControls 
-        enableZoom={false} 
-        enablePan={false}
-        enabled={!selectedPlanet && !isMobile} // Deshabilita OrbitControls en móvil
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
-        maxAzimuthAngle={0}
-        minAzimuthAngle={0}
-      />
+      {!isMobile && (
+        <OrbitControls 
+          enableZoom={false} 
+          enablePan={false}
+          enabled={!selectedPlanet && !isMobile} // Deshabilita OrbitControls en móvil
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
+          maxAzimuthAngle={0}
+          minAzimuthAngle={0}
+        />
+      )}
     </>
   );
 }
@@ -148,24 +150,60 @@ function LoadingManager({ setIsLoading }) {
 export default function Universe() {
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
+  const canvasRef = useRef();
+
+  // Asegurar que el canvas capture eventos táctiles correctamente
+  useEffect(() => {
+    if (canvasRef.current && isMobile) {
+      const canvas = canvasRef.current;
+      
+      // Deshabilitar el comportamiento predeterminado de scroll en el canvas
+      const preventScroll = (e) => {
+        e.preventDefault();
+      };
+      
+      canvas.addEventListener('touchmove', preventScroll, { passive: false });
+      
+      return () => {
+        canvas.removeEventListener('touchmove', preventScroll);
+      };
+    }
+  }, [isMobile]);
 
   return (
     <>
       {isLoading && <LoadingScreen />}
-      <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
+      <Canvas 
+        ref={canvasRef}
+        camera={{ position: [0, 0, 15], fov: 50 }}
+        style={{ 
+          touchAction: "none", // Importante para eventos táctiles
+          height: "100vh", 
+          width: "100vw",
+          position: "fixed", // Para que no haya scroll del navegador
+          top: 0,
+          left: 0
+        }}
+        onCreated={({ gl }) => {
+          // Asegurarse de que el canvas tenga el tamaño correcto
+          gl.setSize(window.innerWidth, window.innerHeight);
+        }}
+      >
         <Suspense fallback={null}>
           <UniverseContent />
           <LoadingManager setIsLoading={setIsLoading} />
         </Suspense>
       </Canvas>
       
-      {/* Indicador de scroll en móvil */}
+      {/* Indicador de scroll más visible */}
       {isMobile && !isLoading && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-70">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-          </svg>
-          <span className="text-sm font-light block text-center">Desliza</span>
+        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white bg-black/50 px-4 py-2 rounded-full z-50">
+          <div className="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+            <span className="text-sm font-medium mt-1">Desliza para explorar</span>
+          </div>
         </div>
       )}
     </>
