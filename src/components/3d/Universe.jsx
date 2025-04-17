@@ -6,11 +6,14 @@ import GalaxyBackground from "./GalaxyBackground";
 import WorldPlanet from "./WorldPlanet";
 import useIsMobile from "../../hooks/useIsMobile";
 import LoadingScreen from "../LoadingScreen";
+import useVerticalScrollCamera from "../../hooks/useVerticalScrollCamera";
 
 function UniverseContent() {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+
+  useVerticalScrollCamera(isMobile)
 
   const planets = isMobile
   ? [
@@ -147,7 +150,7 @@ export default function Universe() {
   return (
     <>
       {isLoading && <LoadingScreen />}
-      <Canvas camera={{ position: [0, 0, 15], fov: 50, far: 100 }}>
+      <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
         <Suspense fallback={null}>
           <UniverseContent />
           <LoadingManager setIsLoading={setIsLoading} />

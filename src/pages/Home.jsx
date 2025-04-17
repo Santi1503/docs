@@ -27,7 +27,7 @@ export default function Home() {
       <AnimatePresence>
         <div className="absolute top-0 left-0 w-full z-10 pt-12 px-4">
           <div className="text-center">
-            <div className="relative inline-block flex flex-wrap justify-center">
+            <div className="relative inline-block">
               {title.split("").map((char, i) => (
                 <motion.span
                   key={i}
