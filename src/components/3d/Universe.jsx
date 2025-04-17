@@ -16,29 +16,29 @@ function UniverseContent() {
   ? [
       {
         name: "Frontend",
-        position: [0, 4, 0],
-        scale: 0.8,
+        position: [0, 2, 0],
+        scale: 0.5,
         texture: "/textures/frontend.png",
         id: "frontend"
       },
       {
         name: "Backend",
-        position: [0, 1.3, 0],
-        scale: 0.8,
+        position: [0, -3, 0],
+        scale: 0.5,
         texture: "/textures/backend.png",
         id: "backend"
       },
       {
         name: "Bases de Datos",
-        position: [0, -1.3, 0],
-        scale: 0.8,
+        position: [0, -8, 0],
+        scale: 0.5,
         texture: "/textures/db.png",
         id: "bases-de-datos"
       },
       {
         name: "Más tecnologías",
-        position: [0, -4, 0],
-        scale: 0.8,
+        position: [0, -12, 0],
+        scale: 0.5,
         texture: "/textures/moretech.png",
         id: "mas-tecnologias"
       },
