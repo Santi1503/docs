@@ -3,10 +3,10 @@ import { motion } from "framer-motion"
 import { techLogos } from "../components/TechLogos"
 
 const techByWorld = {
-    frontend: ["React", "Vite", "Angular"],
-    backend: ["Node.js", "Express", "Firebase functions"],
+    frontend: ["React", "Vite", "Angular", "Tailwindcss", "Framer Motion"],
+    backend: ["Node.js"],
     "bases-de-datos": ["Firebase", "MongoDB", "MySQL"],
-    "mas-tecnologias": ["Jenkins", "Docker", "Git"],
+    "mas-tecnologias": ["Jenkins", "Docker", "Git", "Python"],
 }
 
 export default function World() {
