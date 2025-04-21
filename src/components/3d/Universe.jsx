@@ -6,6 +6,7 @@ import GalaxyBackground from "./GalaxyBackground";
 import WorldPlanet from "./WorldPlanet";
 import useIsMobile from "../../hooks/useIsMobile";
 import LoadingScreen from "../LoadingScreen";
+import Moon from "./Moon";
 
 // Componente para manejar la posición de la cámara
 function CameraController({ cameraY }) {
@@ -22,6 +23,7 @@ function UniverseContent({ cameraY }) {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+  const [hoveredPlanet, setHoveredPlanet] = useState(null)
 
   const planets = isMobile
     ? [
@@ -114,7 +116,12 @@ function UniverseContent({ cameraY }) {
             scale={planet.scale}
             onClick={handlePlanetClick}
             isSelected={selectedPlanet === planet.name}
+            onPointerOver={() => setHoveredPlanet(planet.name)}
+            onPointerOut={() => setHoveredPlanet(null)}
           />
+          {!isMobile && hoveredPlanet === planet.name && (
+            <Moon planetPosition={planet.position} />
+          )}
           <Text
             position={[planet.position[0], planet.position[1] + 2.2, planet.position[2]]}
             fontSize={isMobile ? 0.4 : 0.6}
