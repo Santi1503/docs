@@ -1,9 +1,9 @@
 import { RiReactjsLine, RiGithubFill, RiAngularjsLine } from "react-icons/ri";
 import { TbBrandAws, TbBrandPython, TbBrandDocker, TbBrandTailwind, TbBrandVite, TbBrandFramerMotion  } from "react-icons/tb";
-import { SiMongodb, SiKubernetes, SiJenkins } from "react-icons/si";
+import { SiMongodb, SiJenkins, SiTerraform } from "react-icons/si";
 import { DiMysql } from "react-icons/di";
 import { FaNodeJs } from "react-icons/fa";
-import { BiLogoFirebase } from "react-icons/bi";
+import { BiLogoFirebase, BiLogoKubernetes } from "react-icons/bi";
   
 // Redefinimos cada logo como un componente que usa los iconos de lucide-react
 export const ReactLogo = () => (
@@ -62,9 +62,13 @@ export const FramerMotionLogo = () => (
     <TbBrandFramerMotion className="w-16 h-16" />
 );
 
-export const KubernetesLogo = () => {
-    <SiKubernetes className="w-16 h-16" />
-}
+export const KubernetesLogo = () => (
+    <BiLogoKubernetes className="w-16 h-16" />
+)
+
+export const TerraformLogo = () => (
+    <SiTerraform className="w-16 h-16" />
+)
   
 // Mantenemos el mismo objeto de techLogos
 export const techLogos = {
@@ -82,4 +86,6 @@ export const techLogos = {
     docker: DockerLogo,
     aws: AWSLogo,
     framermotion: FramerMotionLogo,
+    kubernetes: KubernetesLogo,
+    terraform: TerraformLogo,
 };

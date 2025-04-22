@@ -1,0 +1,49 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Instalar Framer Motion en tu proyecto React:",
+        "1. Asegúrate de tener un proyecto de React creado (por ejemplo, con Vite o Create React App).",
+        "2. Instala Framer Motion ejecutando el siguiente comando en la raíz del proyecto:",
+        "```bash\nnpm install framer-motion\n```",
+        "   - Si usas Yarn, usa:",
+        "```bash\nyarn add framer-motion\n```",
+        "3. Verifica la instalación importando `motion` en un componente React.",
+        "   - Ejemplo:",
+        "```javascript\nimport { motion } from 'framer-motion';\n```"
+      ],
+      "Instalar librerías": [
+        "✅ Framer Motion es la librería principal para animaciones.",
+        "1. Para usar animaciones básicas en React, solo necesitas instalar `framer-motion`.",
+        "   - Para React (ya cubierto en la sección anterior).",
+        "2. Si deseas utilizar otros complementos, como `framer-motion` para Vue o `framer-motion` para otros entornos, consulta su [documentación oficial](https://www.framer.com/motion/)."
+      ],
+      "Estructura básica": [
+        "1. motion.div, motion.section, motion.article, etc.: Estos componentes se usan para envolver elementos HTML estándar y habilitar animaciones.",
+        "   - Ejemplo de un componente con animación:",
+        "```javascript\nimport { motion } from 'framer-motion';\n\nconst Example = () => (\n  <motion.div animate={{ x: 100 }} initial={{ x: 0 }} transition={{ duration: 1 }}>\n    ¡Hola, mundo!\n  </motion.div>\n);\n```",
+        "2. Variants: Un objeto donde defines animaciones predefinidas para usar en varios elementos.",
+        "   - Ejemplo de `variants`:",
+        "```javascript\nconst boxVariants = {\n  hidden: { opacity: 0 },\n  visible: { opacity: 1, transition: { duration: 2 } }\n};\n\n<motion.div variants={boxVariants} initial='hidden' animate='visible'>\n  ¡Animación con variantes!\n</motion.div>\n```",
+        "3. Animation types:",
+        "- `animate`: Define la animación que el componente debe ejecutar.",
+        "- `initial`: Estado inicial de la animación.",
+        "- `exit`: Estado final de la animación (útil para animaciones de salida).",
+        "- `transition`: Controla la duración, el retraso y la curva de la animación."
+      ],
+      "Comandos útiles": [
+        "`motion.div` - Componente principal para animar elementos `div`.",
+        "`motion.section` - Componente principal para animar elementos `section`.",
+        "`motion.article` - Componente principal para animar elementos `article`.",
+        "`motion.button` - Componente principal para animar botones.",
+        "`motion.svg` - Componente para animar gráficos SVG.",
+        "`motion.path` - Componente para animar rutas SVG (ideal para animaciones de línea).",
+        "`motion.img` - Componente para animar imágenes (ideal para transiciones de imagen)."
+      ],
+      "Tips & extras": [
+        "✅ Gestión de animaciones complejas: Usa `variants` para animaciones reutilizables y más fáciles de gestionar.",
+        "✅ Animaciones en el scroll: Usa `useAnimation` y `motion.div` con `scroll` para activar animaciones mientras el usuario desplaza la página.",
+        "✅ Gestión de interacciones: Usa `drag` y `whileHover` para agregar interacciones de arrastre y hover a tus componentes.",
+        "✅ Animaciones condicionales: Utiliza `animate` y `initial` en combinación con estados para activar animaciones según la lógica de tu aplicación.",
+        "✅ Optimización de rendimiento: Usa `layout` para animar elementos cuando se redibujan y `exit` para crear transiciones de salida en elementos que se eliminan del DOM.",
+        "✅ Framer Motion con React Router: Usa `motion.div` y `motion.section` para animar transiciones entre diferentes rutas de tu aplicación con React Router."
+      ]
+  }

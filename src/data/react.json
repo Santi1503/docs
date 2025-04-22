@@ -1,7 +1,49 @@
 {
-    "Inicializar proyecto": "Puedes inicializar un proyecto de React usando Vite:\n\n```bash\nnpm create vite@latest my-app --template react\ncd my-app\nnpm install\nnpm run dev\n```",
-    "Instalar librerías": "Para estilos y animaciones básicas puedes instalar:\n\n```bash\nnpm install tailwindcss framer-motion react-router-dom\n```",
-    "Estructura básica": "La estructura típica incluye `App.jsx`, `main.jsx`, una carpeta de `components/` y `pages/`.",
-    "Comandos útiles": "- `npm run dev`: inicia el servidor local\n- `npm run build`: crea el build de producción",
-    "Tips & extras": "- Usa `useState`, `useEffect`, y `useContext` frecuentemente.\n- Descompón tu UI en componentes reutilizables."
+    "Inicializar proyecto": [
+      "🟢 React es una biblioteca de JavaScript para construir interfaces de usuario.",
+      "Puedes inicializar un proyecto de React de varias formas, siendo la más moderna y recomendada usando Vite:",
+      "```bash\nnpm create vite@latest my-react-app --template react\ncd my-react-app\nnpm install\nnpm run dev\n```",
+      "Alternativamente, puedes usar Create React App (aunque está siendo menos recomendado actualmente):",
+      "```bash\nnpx create-react-app my-app\ncd my-app\nnpm start\n```"
+    ],
+    "Instalar librerías": [
+      "❌ React no requiere librerías externas por sí sola, pero existen muchas librerías útiles que puedes instalar dependiendo de las necesidades de tu proyecto.",
+      "Las librerías más comunes y útiles para un proyecto de React son:",
+      "```bash\n# Enrutamiento\nnpm install react-router-dom\n\n# Gestión de estado\nnpm install redux react-redux @reduxjs/toolkit\n# o\nnpm install zustand\n# o \nnpm install jotai\n\n# Estilos y UI\nnpm install tailwindcss postcss autoprefixer\nnpm install styled-components\nnpm install @mui/material @emotion/react @emotion/styled\n\n# Formularios\nnpm install react-hook-form yup\nnpm install formik\n\n# Animaciones\nnpm install framer-motion\nnpm install react-spring\n\n# Fetching de datos\nnpm install axios\nnpm install @tanstack/react-query\n```",
+      "Para configurar TailwindCSS después de instalarlo:",
+      "```bash\nnpx tailwindcss init -p\n```"
+    ],
+    "Estructura básica": [
+      "- src/: Carpeta principal del proyecto.",
+      "- assets/: Imágenes, fuentes y otros archivos estáticos.",
+      "- components/: Componentes reutilizables.",
+      "- hooks/: Custom hooks.",
+      "- pages/: Componentes de página/rutas.",
+      "- services/: Servicios para API, autenticación, etc.",
+      "- store/: Lógica de gestión de estado.",
+      "- utils/: Funciones de utilidad.",
+      "- App.jsx: Componente raíz del proyecto.",
+      "- main.jsx: Punto de entrada del proyecto.",
+      "- index.css: Estilos globales.",
+      "Ejemplo básico de un componente funcional:",
+      "```jsx\nimport { useState, useEffect } from 'react';\n\nfunction MyComponent({ prop1, prop2 }) {\n  const [state, setState] = useState(initialValue);\n  \n  useEffect(() => {\n    // Código que se ejecuta al montar el componente\n    return () => {\n      // Cleanup (opcional)\n    };\n  }, [/* dependencias */]);\n  \n  return (\n    <div>\n      {/* JSX */}\n    </div>\n  );\n}\n\nexport default MyComponent;\n```"
+    ],
+    "Comandos útiles": [
+      "`npm run dev` - Inicia servidor de desarrollo (Vite).",
+      "`npm start` - Inicia servidor de desarrollo (Create React App).",
+      "`npm run build` - Crea build de producción.",
+      "`npm test` - Ejecuta tests.",
+      "`npm run lint` - Ejecuta ESLint.",
+      "`npm run format` - Formatea código con Prettier.",
+      "`npm run analyze` - Analiza tamaño del bundle (requiere configuración)."
+    ],
+    "Tips & extras": [
+      "✅ Usa React DevTools para depurar y analizar el rendimiento de tus componentes.",
+      "✅ Aprovecha los hooks como `useState`, `useEffect`, `useContext`, `useRef`, y `useMemo` para gestionar el estado y el ciclo de vida de los componentes.",
+      "✅ Utiliza React.memo() para memorizar componentes y evitar renders innecesarios.",
+      "✅ Usa Fragmentos (`<>...</>`) para evitar agregar nodos extra al DOM.",
+      "✅ Implementa Error Boundaries para capturar y manejar errores en la interfaz.",
+      "✅ Organiza tus componentes en componentes funcionales puros que dependen únicamente de sus props y estado interno para facilitar testing y rendimiento.",
+      "```jsx\nclass ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  static getDerivedStateFromError(error) {\n    return { hasError: true };\n  }\n  componentDidCatch(error, info) {\n    logErrorToService(error, info);\n  }\n  render() {\n    if (this.state.hasError) {\n      return <h1>Algo salió mal.</h1>;\n    }\n    return this.props.children;\n  }\n}\n```"
+    ]
 }

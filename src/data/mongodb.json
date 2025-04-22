@@ -1,0 +1,41 @@
+{
+      "Inicializar proyecto": [
+        "🟢 En línea (MongoDB Atlas):",
+        "1. Crea una cuenta en https://www.mongodb.com/ y accede a MongoDB Atlas.",
+        "2. Crea un cluster gratuito.",
+        "3. Crea un usuario con contraseña y da acceso a IPs públicas (0.0.0.0/0).",
+        "4. Obtén el string de conexión (URI).",
+        "5. En tu proyecto Node.js:",
+        "```bash\nnpm install mongoose\n```",
+        "6. Crea un archivo de conexión:",
+        "```js\nimport mongoose from 'mongoose';\n\nmongoose.connect('TU_URI')\n  .then(() => console.log('Conectado a MongoDB'))\n  .catch(err => console.error(err));\n```",
+        "🟡 En local:",
+        "1. Instala MongoDB desde https://www.mongodb.com/try/download/community.",
+        "2. Corre el servidor localmente: `mongod`.",
+        "3. Conecta a `mongodb://127.0.0.1:27017/mi_basedatos`",
+        "4. Continúa como arriba, cambiando el URI a `mongodb://127.0.0.1:27017/mi_basedatos`."
+      ],
+      "Instalar librerías": [
+        "```bash\nnpm install mongoose\n```"
+      ],
+      "Estructura básica": [
+        "// Modelo",
+        "```js\nimport { Schema, model } from 'mongoose';\n\nconst UsuarioSchema = new Schema({\n  nombre: String,\n  edad: Number\n});\n\nexport const Usuario = model('Usuario', UsuarioSchema);\n```",
+        "// Uso",
+        "```js\n// Crear\nconst nuevo = new Usuario({ nombre: 'Ana', edad: 25 });\nawait nuevo.save();\n\n// Leer\nconst usuarios = await Usuario.find();\n\n// Actualizar\nawait Usuario.findByIdAndUpdate(id, { edad: 30 });\n\n// Eliminar\nawait Usuario.findByIdAndDelete(id);\n```"
+      ],
+      "Comandos útiles": [
+        "`mongoose.connect(uri)` - Conecta a la base de datos.",
+        "`model(nombre, esquema)` - Crea un modelo.",
+        "`find()`, `findById()`, `save()` - CRUD básico.",
+        "`findByIdAndUpdate()`, `findByIdAndDelete()` - Modificar/eliminar."
+      ],
+      "Tips & extras": [
+        "✅ Usa variables de entorno para guardar el URI de conexión.",
+        "✅ Los esquemas permiten validar los datos.",
+        "✅ Puedes definir relaciones entre colecciones con referencias.",
+        "✅ Ideal para proyectos con estructuras de datos flexibles.",
+        "✅ Atlas incluye herramientas para monitoreo, backups y más.",
+        "✅ Puedes hacer queries complejas con operadores (`$gt`, `$in`, etc)."
+      ]
+  }

@@ -1,0 +1,54 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Vite es un bundler y servidor de desarrollo extremadamente rápido para aplicaciones modernas de JavaScript.",
+        "1. Iniciar proyecto con asistente interactivo:",
+        "```bash\nnpm create vite@latest\n```",
+        "2. Iniciar proyecto con plantilla específica:",
+        "```bash\n# React\nnpm create vite@latest my-app --template react\n\n# React + TypeScript\nnpm create vite@latest my-app --template react-ts\n\n# Vue\nnpm create vite@latest my-app --template vue\n\n# Vue + TypeScript\nnpm create vite@latest my-app --template vue-ts\n\n# Svelte\nnpm create vite@latest my-app --template svelte\n\n# Svelte + TypeScript\nnpm create vite@latest my-app --template svelte-ts\n\n# JavaScript vanilla\nnpm create vite@latest my-app --template vanilla\n\n# TypeScript vanilla\nnpm create vite@latest my-app --template vanilla-ts\n```",
+        "3. Después de inicializar el proyecto, navega al directorio e instala las dependencias:",
+        "```bash\ncd my-app\nnpm install\nnpm run dev\n```"
+      ],
+      "Instalar librerías": [
+        "❌ Vite es compatible con la mayoría de librerías de ecosistema JavaScript/TypeScript.",
+        "1. Instalación de TypeScript:",
+        "```bash\nnpm install -D typescript\n```",
+        "2. Instalación de herramientas para linting y formato:",
+        "```bash\nnpm install -D eslint eslint-plugin-react eslint-plugin-react-hooks\nnpm install -D prettier eslint-config-prettier eslint-plugin-prettier\n```",
+        "3. Instalación de librerías para testing:",
+        "```bash\nnpm install -D vitest jsdom @testing-library/react @testing-library/jest-dom\n```",
+        "4. Instalación de Storybook para documentación de componentes:",
+        "```bash\nnpm install -D storybook\n```",
+        "5. Instalación para optimización de imágenes:",
+        "```bash\nnpm install -D vite-imagetools\n```",
+        "6. Instalación de soporte para SASS/SCSS:",
+        "```bash\nnpm install -D sass\n```",
+        "7. Soporte para PWA:",
+        "```bash\nnpm install -D vite-plugin-pwa\n```"
+      ],
+      "Estructura básica": [
+        "📁 Estructura típica de un proyecto Vite:",
+        "```bash\n├── public/               # Archivos estáticos que se copian tal cual\n│   └── favicon.ico\n├── src/                  # Código fuente\n│   ├── assets/           # Recursos como imágenes o fuentes\n│   ├── components/        # Componentes\n│   ├── App.jsx           # Componente principal\n│   └── main.jsx          # Punto de entrada\n├── index.html            # HTML principal (importante en Vite)\n├── package.json          # Dependencias y scripts\n├── vite.config.js        # Configuración de Vite\n└── tsconfig.json         # Configuración de TypeScript (si aplica)\n```",
+        "📄 Configuración básica de `vite.config.js`:",
+        "```javascript\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\nimport path from 'path'\n\nexport default defineConfig({\n  plugins: [react()],\n  resolve: {\n    alias: {\n      '@': path.resolve(__dirname, './src')\n    }\n  },\n  server: {\n    port: 3000,\n    open: true\n  },\n  build: {\n    outDir: 'dist',\n    minify: 'esbuild',\n    sourcemap: true\n  }\n})\n```"
+      ],
+      "Comandos útiles": [
+        "🚀 Comandos principales para trabajar con Vite:",
+        "`npm run dev` - Inicia servidor de desarrollo.",
+        "`npm run build` - Construye el proyecto para producción.",
+        "`npm run preview` - Previsualiza la build de producción localmente.",
+        "`npm run test` - Ejecuta tests (si está configurado con Vitest).",
+        "`npm run coverage` - Ejecuta tests con cobertura.",
+        "`npm run build -- --debug` - Muestra estadísticas de build.",
+        "`npm run build -- --profile` - Genera perfil para análisis."
+      ],
+      "Tips & extras": [
+        "✅ Hot Module Replacement (HMR): Vite ofrece HMR extremadamente rápido. Asegúrate de que tus componentes preserven el estado durante los reemplazos utilizando `import.meta.hot`.",
+        "✅ Imports dinámicos: Usa `import()` para cargar código bajo demanda y optimizar la carga inicial.",
+        "✅ Variables de entorno: Accede a variables de entorno con el prefijo `import.meta.env.VITE_`.",
+        "✅ Archivos .env: Usa archivos `.env`, `.env.development`, `.env.production` para organizar variables de entorno.",
+        "✅ Importación de assets: Importa assets directamente en tus componentes para que Vite los procese y optimice.",
+        "✅ Optimización de imágenes: Configura plugins como `vite-imagetools` para optimizar automáticamente las imágenes.",
+        "✅ Modo legacy: Configura soporte para navegadores antiguos con el plugin `@vitejs/plugin-legacy`.",
+        "✅ Pre-bundling de dependencias: Vite hace pre-bundling de dependencias automáticamente, pero puedes forzar optimizaciones con `vite optimize`."
+      ]
+  }

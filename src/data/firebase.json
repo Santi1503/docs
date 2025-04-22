@@ -1,0 +1,42 @@
+{
+      "Inicializar proyecto": [
+        "1. Ve a https://console.firebase.google.com/",
+        "2. Crea un nuevo proyecto con el botón 'Agregar proyecto'.",
+        "3. Agrega una app web (ícono </>) y copia la configuración.",
+        "4. Inicializa Firebase en tu proyecto:",
+        "```js\nimport { initializeApp } from 'firebase/app';\n\nconst firebaseConfig = {\n  apiKey: 'tu-api-key',\n  authDomain: 'tu-proyecto.firebaseapp.com',\n  projectId: 'tu-proyecto-id',\n  storageBucket: 'tu-proyecto.appspot.com',\n  messagingSenderId: 'tu-sender-id',\n  appId: 'tu-app-id'\n};\n\nexport const app = initializeApp(firebaseConfig);\n```"
+      ],
+      "Instalar librerías": [
+        "```bash\nnpm install firebase\n```"
+      ],
+      "Estructura básica": [
+        "// Inicialización de módulos",
+        "```js\nimport { getAuth } from 'firebase/auth';\nimport { getFirestore } from 'firebase/firestore';\nimport { getStorage } from 'firebase/storage';\n\nexport const auth = getAuth(app);\nexport const db = getFirestore(app);\nexport const storage = getStorage(app);\n```",
+        "// Autenticación",
+        "```js\nimport { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';\n\n// Crear cuenta\nawait createUserWithEmailAndPassword(auth, email, password);\n\n// Iniciar sesión\nawait signInWithEmailAndPassword(auth, email, password);\n\n// Escuchar cambios de sesión\nonAuthStateChanged(auth, user => {\n  if (user) console.log('Logueado', user);\n  else console.log('Deslogueado');\n});\n```",
+        "// Firestore",
+        "```js\nimport { collection, addDoc, getDocs, onSnapshot } from 'firebase/firestore';\n\n// Agregar documento\nawait addDoc(collection(db, 'usuarios'), { nombre: 'Ana', edad: 25 });\n\n// Obtener documentos\nconst snapshot = await getDocs(collection(db, 'usuarios'));\nsnapshot.forEach(doc => console.log(doc.data()));\n\n// Escuchar en tiempo real\nonSnapshot(collection(db, 'usuarios'), snapshot => {\n  snapshot.forEach(doc => console.log(doc.data()));\n});\n```",
+        "// Storage",
+        "```js\nimport { ref, uploadBytes, getDownloadURL } from 'firebase/storage';\n\nconst fileRef = ref(storage, `imagenes/${file.name}`);\nawait uploadBytes(fileRef, file);\nconst url = await getDownloadURL(fileRef);\n```"
+      ],
+      "Comandos útiles": [
+        "// Instalación:",
+        "`npm install firebase`",
+        "// Inicializar Firebase App:",
+        "`initializeApp(config)`",
+        "// Módulos disponibles:",
+        "`getAuth()` - Autenticación",
+        "`getFirestore()` - Base de datos NoSQL",
+        "`getStorage()` - Almacenamiento de archivos"
+      ],
+      "Tips & extras": [
+        "✅ Crea un archivo `firebaseConfig.js` para centralizar la configuración.",
+        "✅ Usa contextos en React para compartir `auth`, `db`, y `storage`.",
+        "✅ Define reglas de seguridad en Firebase Console según tu lógica.",
+        "✅ Firestore es una base de datos NoSQL basada en documentos.",
+        "✅ El Storage usa referencias (paths) para acceder/subir archivos.",
+        "✅ Puedes ver tus archivos desde la consola de Firebase -> Storage.",
+        "✅ Usa `onAuthStateChanged` para mantener la sesión en tiempo real.",
+        "✅ Usa Firestore con `onSnapshot` para sincronización en vivo."
+      ]
+}

@@ -1,0 +1,66 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Instalar Kubernetes en tu proyecto:",
+        "1. Instalación local (minikube): Para crear un clúster local de Kubernetes, puedes usar Minikube. Sigue estos pasos:",
+        "   - Descarga Minikube desde su [página oficial](https://minikube.sigs.k8s.io/docs/).",
+        "   - Para instalar Minikube en Linux/Mac, puedes usar los siguientes comandos:",
+        "   ```bash\n   curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64\n   sudo mv minikube-linux-amd64 /usr/local/bin/minikube\n   sudo chmod +x /usr/local/bin/minikube\n   ```",
+        "   - En Windows, puedes usar el instalador [Minikube Installer](https://github.com/kubernetes/minikube/releases).",
+        "2. Iniciar Minikube:",
+        "   ```bash\n   minikube start\n   ```",
+        "   Esto configurará y arrancará un clúster local de Kubernetes.",
+        "3. Verificar el estado de Minikube:",
+        "   ```bash\n   minikube status\n   ```",
+        "4. Acceder al clúster de Kubernetes:",
+        "   Minikube configura automáticamente `kubectl` para usar el clúster local, por lo que puedes ejecutar los comandos de Kubernetes directamente."
+      ],
+      "Instalar librerías": [
+        "✅ Instalar kubectl:",
+        "   `kubectl` es la herramienta de línea de comandos para interactuar con el clúster de Kubernetes. Para instalarla:",
+        "   - En Mac/Linux: `brew install kubectl`",
+        "   - En Windows: descarga el binario desde [Kubernetes releases](https://kubernetes.io/docs/tasks/tools/install-kubectl/).",
+        "✅ Instalar Helm (opcional): Helm es un gestor de paquetes para Kubernetes. Para instalarlo:",
+        "   - En Mac/Linux: `brew install helm`",
+        "   - En Windows: descarga el binario desde [Helm](https://helm.sh/)."
+      ],
+      "Estructura básica": [
+        "1. Archivos de configuración de Kubernetes: Los archivos de configuración de Kubernetes son generalmente archivos YAML que definen los recursos de Kubernetes como Pods, Deployments, Services, etc.",
+        "   Ejemplo de un Pod básico:",
+        "   ```yaml\n   apiVersion: v1\n   kind: Pod\n   metadata:\n     name: mypod\n   spec:\n     containers:\n     - name: nginx\n       image: nginx\n   ```",
+        "2. Ejecutar un Pod: Para ejecutar un Pod con el archivo YAML anterior:",
+        "   ```bash\n   kubectl apply -f pod.yaml\n   ```",
+        "3. Ver el estado de los recursos:",
+        "   ```bash\n   kubectl get pods\n   ```",
+        "4. Eliminar un Pod:",
+        "   ```bash\n   kubectl delete pod mypod\n   ```",
+        "5. Crear un Deployment: Los deployments te permiten administrar el ciclo de vida de los Pods. Ejemplo de Deployment para una app NGINX:",
+        "   ```yaml\n   apiVersion: apps/v1\n   kind: Deployment\n   metadata:\n     name: nginx-deployment\n   spec:\n     replicas: 2\n     selector:\n       matchLabels:\n         app: nginx\n     template:\n       metadata:\n         labels:\n           app: nginx\n       spec:\n         containers:\n         - name: nginx\n           image: nginx\n   ```",
+        "   Para aplicar este Deployment:",
+        "   ```bash\n   kubectl apply -f deployment.yaml\n   ```"
+      ],
+      "Comandos útiles": [
+        "`kubectl apply -f <archivo>.yaml` - Aplica la configuración de un archivo YAML (como un Pod, Deployment, etc.).",
+        "`kubectl get pods` - Muestra los Pods en ejecución.",
+        "`kubectl get deployments` - Muestra los Deployments.",
+        "`kubectl describe pod <nombre-pod>` - Muestra detalles sobre un Pod específico.",
+        "`kubectl logs <nombre-pod>` - Muestra los logs de un Pod.",
+        "`kubectl delete pod <nombre-pod>` - Elimina un Pod específico.",
+        "`kubectl get services` - Muestra los servicios configurados en Kubernetes.",
+        "`kubectl expose pod <nombre-pod> --port=<puerto>` - Expone un Pod a través de un servicio."
+      ],
+      "Tips & extras": [
+        "✅ Usar Namespaces: Organiza tus recursos en diferentes namespaces para tener una estructura más clara en clústeres grandes.",
+        "   Ejemplo de creación de un Namespace:",
+        "   ```yaml\n   apiVersion: v1\n   kind: Namespace\n   metadata:\n     name: mynamespace\n   ```",
+        "   ```bash\n   kubectl apply -f namespace.yaml\n   ```",
+        "✅ Uso de ConfigMaps y Secrets: Puedes almacenar configuraciones no sensibles (ConfigMap) y sensibles (Secrets) que las aplicaciones pueden consumir.",
+        "   Ejemplo de ConfigMap:",
+        "   ```yaml\n   apiVersion: v1\n   kind: ConfigMap\n   metadata:\n     name: my-config\n   data:\n     app_key: value\n   ```",
+        "   Ejemplo de Secret (base64):",
+        "   ```yaml\n   apiVersion: v1\n   kind: Secret\n   metadata:\n     name: my-secret\n   data:\n     password: cGFzc3dvcmQ=\n   ```",
+        "✅ Helm Charts: Usa Helm para administrar paquetes de aplicaciones en Kubernetes. Es útil para instalar aplicaciones comunes como bases de datos o servidores web.",
+        "✅ Escalabilidad automática: Configura HPA (Horizontal Pod Autoscaler) para escalar automáticamente los Pods basados en la carga del clúster.",
+        "   Ejemplo de HPA para un Deployment:",
+        "   ```yaml\n   apiVersion: autoscaling/v2\n   kind: HorizontalPodAutoscaler\n   metadata:\n     name: nginx-hpa\n   spec:\n     scaleTargetRef:\n       apiVersion: apps/v1\n       kind: Deployment\n       name: nginx-deployment\n     minReplicas: 1\n     maxReplicas: 10\n     metrics:\n     - type: Resource\n       resource:\n         name: cpu\n         target:\n           type: Utilization\n           averageUtilization: 50\n   ```"
+      ]
+  }

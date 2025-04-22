@@ -1,0 +1,72 @@
+{
+      "Inicializar proyecto": [
+        "🚀 Instalar Angular CLI y crear un proyecto:",
+        "1. Instalar Angular CLI:",
+        "   - Si no tienes Angular CLI instalado, ejecuta el siguiente comando:",
+        "   ```bash\n   npm install -g @angular/cli\n   ```",
+        "2. Crear un nuevo proyecto Angular:",
+        "   - Ejecuta este comando para crear un proyecto Angular:",
+        "   ```bash\n   ng new my-angular-app\n   ```",
+        "   - Si quieres evitar preguntas interactivas y definir configuraciones específicas, usa:",
+        "   ```bash\n   ng new my-angular-app --routing --style=scss --skip-tests\n   ```",
+        "3. Iniciar el servidor de desarrollo:",
+        "   - Accede al directorio y ejecuta el servidor:",
+        "   ```bash\n   cd my-angular-app\n   ng serve\n   ```",
+        "4. Abrir la aplicación en el navegador:",
+        "   - Por defecto, la aplicación se abrirá en `http://localhost:4200/`."
+      ],
+      "Instalar librerías": [
+        "📦 Librerías comunes para proyectos Angular:",
+        "1. Angular Material (UI components):",
+        "   ```bash\n   ng add @angular/material\n   ```",
+        "2. State Management con NgRx:",
+        "   ```bash\n   ng add @ngrx/store\n   ng add @ngrx/effects\n   ng add @ngrx/entity\n   ng add @ngrx/store-devtools\n   ```",
+        "3. Forms avanzados:",
+        "   ```bash\n   npm install @ngneat/reactive-forms\n   ```",
+        "4. HTTP y APIs:",
+        "   ```bash\n   npm install @ngneat/cashew\n   ```",
+        "5. Animaciones (GSAP):",
+        "   ```bash\n   npm install gsap\n   ```"
+      ],
+      "Estructura básica": [
+        "🗂 Estructura de un proyecto Angular:",
+        "1. Estructura de carpetas:",
+        "   ```",
+        "   src/",
+        "   ├── app/",
+        "   │   ├── core/              # Servicios globales, interceptores",
+        "   │   ├── shared/            # Componentes y pipes comunes",
+        "   │   ├── features/          # Módulos de funcionalidades",
+        "   │   ├── app-routing.module.ts",
+        "   │   ├── app.component.ts",
+        "   │   └── app.module.ts",
+        "   ├── assets/               # Imágenes y recursos estáticos",
+        "   ├── environments/         # Configuraciones específicas de entorno",
+        "   ├── index.html            # Archivo principal HTML",
+        "   └── styles.scss           # Estilos globales",
+        "   ```",
+        "2. Componente básico:",
+        "   ```typescript\n   import { Component } from '@angular/core';\n\n   @Component({\n     selector: 'app-root',\n     templateUrl: './app.component.html',\n     styleUrls: ['./app.component.scss']\n   })\n   export class AppComponent {}\n   ```",
+        "3. Servicio básico:",
+        "   ```typescript\n   import { Injectable } from '@angular/core';\n\n   @Injectable({\n     providedIn: 'root'\n   })\n   export class DataService {\n     constructor() {}\n   }\n   ```"
+      ],
+      "Comandos útiles": [
+        "`ng serve` - Inicia el servidor de desarrollo.",
+        "`ng build` - Crea una versión optimizada de tu aplicación para producción.",
+        "`ng generate component <nombre>` - Crea un nuevo componente.",
+        "`ng generate service <nombre>` - Crea un nuevo servicio.",
+        "`ng generate module <nombre>` - Crea un nuevo módulo.",
+        "`ng test` - Ejecuta los tests unitarios.",
+        "`ng lint` - Ejecuta el linter para revisar el código.",
+        "`ng e2e` - Ejecuta pruebas end-to-end."
+      ],
+      "Tips & extras": [
+        "✅ Usar ChangeDetectionStrategy.OnPush: Mejora el rendimiento usando OnPush para optimizar la detección de cambios.",
+        "   ```typescript\n   @Component({\n     selector: 'app-my-component',\n     changeDetection: ChangeDetectionStrategy.OnPush\n   })\n   export class MyComponent {}\n   ```",
+        "✅ Lazy Loading: Divide tu aplicación en módulos que se cargan solo cuando se necesitan, lo que mejora el tiempo de carga inicial.",
+        "   ```typescript\n   const routes: Routes = [\n     {\n       path: 'feature',\n       loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule)\n     }\n   ];\n   ```",
+        "✅ Uso de servicios en el root: Los servicios definidos con `providedIn: 'root'` se instancian solo una vez y se comparten en toda la aplicación.",
+        "✅ Usar RxJS eficientemente: Asegúrate de desuscribirte de Observables usando `takeUntil` para evitar pérdidas de memoria.",
+        "   ```typescript\n   import { Subject } from 'rxjs';\n   import { takeUntil } from 'rxjs/operators';\n\n   ngOnInit() {\n     this.service.getData().pipe(\n       takeUntil(this.destroy$)\n     ).subscribe(data => { /* ... */ });\n   }\n   ngOnDestroy() {\n     this.destroy$.next();\n     this.destroy$.complete();\n   }\n   ```"
+      ]
+  }

@@ -3,10 +3,10 @@ import { motion } from "framer-motion"
 import { techLogos } from "../components/TechLogos"
 
 const techByWorld = {
-    frontend: ["React", "Vite", "Angular", "Tailwindcss", "Framer Motion"],
-    backend: ["Node.js"],
+    frontend: ["React", "Vite", "Angular", "Tailwindcss", "FramerMotion"],
+    backend: ["Nodejs"],
     "bases-de-datos": ["Firebase", "MongoDB", "MySQL"],
-    "mas-tecnologias": ["Jenkins", "Docker", "Git", "Python"],
+    "mas-tecnologias": ["Jenkins", "Docker", "Github", "Python", "Terraform", "Kubernetes"],
 }
 
 export default function World() {
@@ -25,7 +25,7 @@ export default function World() {
             <span className="flex gap-6 justify-start">
             {/* Botón Atrás */}
             <button 
-                onClick={() => navigate(-1)} 
+                onClick={() => navigate("/")} 
                 className="text-white border-1 border-white bg-slate-900 p-2 rounded-lg mb-6 cursor-pointer"
             >
                 Atrás

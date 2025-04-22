@@ -1,0 +1,44 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Crear y configurar un proyecto Python:",
+        "1. Crear el directorio del proyecto y configurar un entorno virtual:",
+        "```bash\n# Crear directorio del proyecto\nmkdir my_project\ncd my_project\n\n# Crear entorno virtual\npython -m venv venv\n\n# Activar entorno virtual\n# En Windows:\nvenv\\Scripts\\activate\n# En macOS/Linux:\nsource venv/bin/activate\n```",
+        "2. Estructura inicial del proyecto:",
+        "```bash\n# Crear estructura de directorios\nmkdir -p src/my_project tests docs\n\n# Crear archivos iniciales\ntouch README.md\ntouch requirements.txt\ntouch src/my_project/__init__.py\ntouch src/my_project/main.py\n```",
+        "3. Opcional: Usar Poetry para la gestión de dependencias:",
+        "```bash\n# Instalar Poetry\npip install poetry\n\n# Inicializar proyecto con Poetry\npoetry new my_project\ncd my_project\n\n# Agregar dependencias\npoetry add requests pandas\n```"
+      ],
+      "Instalar librerías": [
+        "🟢 Instalar librerías básicas en Python:",
+        "1. Herramientas de desarrollo:",
+        "```bash\npip install black      # Formateador de código\npip install flake8     # Linter\npip install pytest     # Testing\npip install mypy       # Comprobación de tipos estáticos\npip install pre-commit # Hooks de pre-commit\npip install tox        # Automatización de pruebas\n```",
+        "2. Frameworks y clientes HTTP:",
+        "```bash\npip install flask django fastapi     # Frameworks web\npip install requests                 # Cliente HTTP\npip install httpx                    # Cliente HTTP asíncrono\n```",
+        "3. Ciencia de datos y machine learning:",
+        "```bash\npip install numpy pandas matplotlib seaborn\npip install scikit-learn scipy statsmodels\npip install jupyter jupyterlab\n```",
+        "4. Bases de datos y DevOps:",
+        "```bash\npip install sqlalchemy             # ORM SQL\npip install psycopg2 pymysql       # Conectores SQL\npip install pymongo                # MongoDB\npip install redis                  # Redis\n```"
+      ],
+      "Estructura básica": [
+        "- Estructura recomendada para un proyecto Python:",
+        "```bash\nmy_project/\n├── .github/                # Configuración de GitHub Actions\n├── docs/                   # Documentación\n├── src/\n│   └── my_package/         # Código fuente principal\n│       ├── __init__.py     # Hace que my_package sea un módulo\n│       ├── main.py         # Punto de entrada\n│       ├── models.py       # Definiciones de datos\n│       ├── utils.py        # Utilidades\n│       └── submodule/      # Submódulo\n│           └── __init__.py\n├── tests/                  # Pruebas\n│   ├── __init__.py\n│   ├── conftest.py         # Configuración de pytest\n│   └── test_main.py\n├── .gitignore\n├── pyproject.toml          # Configuración moderna (PEP 518)\n├── README.md\n├── setup.py                # Si se usa setuptools\n└── requirements.txt\n```"
+      ],
+      "Comandos útiles": [
+        "`python -m venv venv` - Crear entorno virtual.",
+        "`source venv/bin/activate` - Activar entorno virtual (Linux/macOS).",
+        "`venv\\Scripts\\activate` - Activar entorno virtual (Windows).",
+        "`pip install -r requirements.txt` - Instalar dependencias desde requirements.txt.",
+        "`pytest` - Ejecutar las pruebas con pytest.",
+        "`black src/` - Formatear el código con black.",
+        "`flake8 src/` - Verificar el estilo del código.",
+        "`mypy src/` - Verificar los tipos estáticos del código.",
+        "`tox` - Ejecutar pruebas en múltiples entornos."
+      ],
+      "Tips & extras": [
+        "✅ Uso de Type Hints: Anota los tipos de datos para mejorar la legibilidad y habilitar la verificación estática del código.",
+        "✅ Uso de Docstrings: Documenta las funciones con formato adecuado (Google, NumPy o reStructuredText) para mejorar la comprensión.",
+        "✅ Gestores de contexto: Usa `with` para la gestión eficiente de recursos, como archivos o conexiones a bases de datos.",
+        "✅ Configuración separada: Usa archivos de configuración para manejar variables y ajustes del proyecto de manera centralizada.",
+        "✅ Uso de entornos virtuales y Poetry: Usa entornos virtuales para gestionar dependencias específicas del proyecto y Poetry para facilitar la gestión de estas dependencias."
+      ]
+}

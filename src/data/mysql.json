@@ -1,0 +1,45 @@
+{
+      "Inicializar proyecto": [
+        "🟢 En línea (PlanetScale u otros):",
+        "1. Crea una cuenta en https://planetscale.com/ y un nuevo proyecto.",
+        "2. Configura el esquema inicial con SQL o desde su panel.",
+        "3. Obtén las credenciales de conexión (host, user, password, database).",
+        "4. En tu proyecto:",
+        "```bash\nnpm install mysql2\n```",
+        "```js\nimport mysql from 'mysql2/promise';\n\nconst db = await mysql.createConnection({\n  host: 'your-host',\n  user: 'your-user',\n  password: 'your-password',\n  database: 'your-database'\n});\n```",
+        "🟡 En local:",
+        "1. Instala MySQL local desde https://dev.mysql.com/downloads/installer/",
+        "2. Durante la instalación, configura el usuario root y contraseña.",
+        "3. Crea una base con el comando:\n```sql\nCREATE DATABASE mi_base;\n```",
+        "4. Conéctate desde Node:",
+        "```js\nconst db = await mysql.createConnection({\n  host: 'localhost',\n  user: 'root',\n  password: 'tu_pass',\n  database: 'mi_base'\n});\n```"
+      ],
+      "Instalar librerías": [
+        "```bash\nnpm install mysql2\n```"
+      ],
+      "Estructura básica": [
+        "// Crear tabla",
+        "```sql\nCREATE TABLE usuarios (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  nombre VARCHAR(50),\n  edad INT\n);\n```",
+        "// Insertar datos",
+        "```js\nawait db.execute('INSERT INTO usuarios (nombre, edad) VALUES (?, ?)', ['Ana', 25]);\n```",
+        "// Leer datos",
+        "```js\nconst [rows] = await db.execute('SELECT * FROM usuarios');\nconsole.log(rows);\n```",
+        "// Actualizar y eliminar",
+        "```js\nawait db.execute('UPDATE usuarios SET edad = ? WHERE id = ?', [30, 1]);\nawait db.execute('DELETE FROM usuarios WHERE id = ?', [1]);\n```"
+      ],
+      "Comandos útiles": [
+        "`CREATE TABLE` - Crea una nueva tabla.",
+        "`SELECT * FROM tabla` - Obtiene todos los datos.",
+        "`INSERT INTO tabla (campos) VALUES (...)` - Inserta datos.",
+        "`UPDATE tabla SET campo = valor WHERE condicion` - Actualiza.",
+        "`DELETE FROM tabla WHERE condicion` - Elimina."
+      ],
+      "Tips & extras": [
+        "✅ Usa el paquete `mysql2/promise` para usar async/await.",
+        "✅ Usa `?` como placeholders para prevenir inyecciones SQL.",
+        "✅ Ideal cuando necesitas relaciones entre datos y consistencia estricta.",
+        "✅ PlanetScale es una buena opción moderna con escalabilidad.",
+        "✅ Puedes visualizar tus datos con herramientas como MySQL Workbench.",
+        "✅ MySQL es relacional, por lo que requiere definir bien la estructura desde el inicio."
+      ]
+  }

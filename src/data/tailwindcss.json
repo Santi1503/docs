@@ -1,0 +1,48 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Inicializar en un proyecto existente:",
+        "1. Instalar Tailwind y sus dependencias:",
+        "```bash\nnpm install tailwindcss postcss autoprefixer\n```",
+        "2. Generar los archivos de configuración:",
+        "```bash\nnpx tailwindcss init -p\n```",
+        "3. Para un nuevo proyecto con Tailwind + framework:",
+        "    - Con Next.js:",
+        "    ```bash\nnpx create-next-app@latest my-project\ncd my-project\nnpm install tailwindcss postcss autoprefixer\nnpx tailwindcss init -p\n```",
+        "    - Con Vite:",
+        "    ```bash\nnpm create vite@latest my-project\ncd my-project\nnpm install\nnpm install tailwindcss postcss autoprefixer\nnpx tailwindcss init -p\n```"
+      ],
+      "Instalar librerías": [
+        "❌ Plugins y extensiones populares:",
+        "```bash\n# Formularios más fáciles\nnpm install @tailwindcss/forms\n\n# Contenido de texto con estilos automáticos\nnpm install @tailwindcss/typography\n\n# Componentes de interfaz\nnpm install daisyui  # UI Components\nnpm install @headlessui/react  # UI sin estilos para React\nnpm install @headlessui/vue  # UI para Vue\n\n# Animaciones\nnpm install tailwindcss-animate\n\n# Otros plugins\nnpm install tailwind-scrollbar  # Personalizar scrollbar\nnpm install tailwindcss-aspect-ratio  # Relaciones de aspecto\n```",
+        "Configuración para usarlos en `tailwind.config.js`:",
+        "```javascript\nmodule.exports = {\n  content: [\n    \"./src//*.{js,jsx,ts,tsx}\",\n  ],\n  theme: {\n    extend: {},\n  },\n  plugins: [\n    require('@tailwindcss/forms'),\n    require('@tailwindcss/typography'),\n    require('daisyui'),\n    require('tailwindcss-animate'),\n  ],\n}\n```"
+      ],
+      "Estructura básica": [
+        "- Dockerfile: Archivo que define el entorno y la configuración de una imagen Docker.",
+        "  Ejemplo básico de Dockerfile:",
+        "  ```dockerfile\nFROM node:14\nWORKDIR /app\nCOPY . .\nRUN npm install\nCMD [\"npm\", \"start\"]\nEXPOSE 3000\n```",
+        "- docker-compose.yml: Archivo para definir y ejecutar aplicaciones multi-contenedor.",
+        "  Ejemplo básico de docker-compose.yml:",
+        "  ```yaml\nversion: '3'\nservices:\n  web:\n    build: .\n    ports:\n      - \"5000:5000\"\n  db:\n    image: mongo\n    ports:\n      - \"27017:27017\"\n```",
+        "- Contenedor: Instancia de una imagen que se está ejecutando.",
+        "- Imagen: Plantilla inmutable de la cual se crean contenedores.",
+        "- Volúmenes: Usados para persistir datos entre contenedores."
+      ],
+      "Comandos útiles": [
+        "`docker build -t nombre_imagen .` - Construye una imagen a partir de un Dockerfile.",
+        "`docker run -d -p 8080:80 nombre_imagen` - Ejecuta un contenedor basado en una imagen.",
+        "`docker ps` - Muestra los contenedores en ejecución.",
+        "`docker stop <container_id>` - Detiene un contenedor.",
+        "`docker-compose up` - Levanta los contenedores definidos en un archivo docker-compose.yml.",
+        "`docker-compose down` - Detiene y elimina los contenedores y redes de un archivo docker-compose.yml."
+      ],
+      "Tips & extras": [
+        "✅ Usa docker-compose para manejar aplicaciones con múltiples contenedores (por ejemplo, un contenedor para la base de datos y otro para el backend).",
+        "✅ Usa volúmenes para persistir datos entre ejecuciones de contenedores.",
+        "✅ Utiliza Dockerfile multietapa para optimizar la construcción de imágenes, eliminando dependencias innecesarias al final del proceso.",
+        "✅ Considera usar Docker para desarrollo local con bases de datos, servidores web, etc., para emular el entorno de producción.",
+        "✅ Usa Docker Desktop para una experiencia más fácil de usar en macOS y Windows, que incluye la interfaz gráfica para manejar contenedores.",
+        "✅ Aprovecha las imágenes oficiales de Docker Hub para servicios populares como Node.js, Nginx, MongoDB, entre otros.",
+        "✅ Utiliza Docker Swarm o Kubernetes para orquestar contenedores a gran escala."
+      ]
+  }

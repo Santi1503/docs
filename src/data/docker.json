@@ -1,0 +1,48 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Instalar Docker de forma local:",
+        "1. Para Linux (Ubuntu/Debian):",
+        "```bash\nsudo apt update\nsudo apt install apt-transport-https ca-certificates curl software-properties-common\ncurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -\nsudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"\nsudo apt update\nsudo apt install docker-ce\n```",
+        "2. Para macOS:",
+        "- Descarga Docker Desktop desde https://www.docker.com/products/docker-desktop y sigue las instrucciones.",
+        "3. Para Windows:",
+        "- Descarga Docker Desktop desde https://www.docker.com/products/docker-desktop y sigue las instrucciones.",
+        "4. Verifica la instalación con el siguiente comando:",
+        "```bash\ndocker --version\n```"
+      ],
+      "Instalar librerías": [
+        "❌ Docker no requiere librerías externas, pero puedes instalar imágenes y contenedores para diversas aplicaciones.",
+        "1. Para instalar una imagen, usa el comando:",
+        "```bash\ndocker pull nombre_imagen\n```",
+        "2. Para crear un contenedor a partir de una imagen:",
+        "```bash\ndocker run -d -p 8080:80 nombre_imagen\n```"
+      ],
+      "Estructura básica": [
+        "- Dockerfile: Archivo que define el entorno y la configuración de una imagen Docker.",
+        "  Ejemplo básico de Dockerfile:",
+        "  ```dockerfile\nFROM node:14\nWORKDIR /app\nCOPY . .\nRUN npm install\nCMD [\"npm\", \"start\"]\nEXPOSE 3000\n```",
+        "- docker-compose.yml: Archivo para definir y ejecutar aplicaciones multi-contenedor.",
+        "  Ejemplo básico de docker-compose.yml:",
+        "  ```yaml\nversion: '3'\nservices:\n  web:\n    build: .\n    ports:\n      - \"5000:5000\"\n  db:\n    image: mongo\n    ports:\n      - \"27017:27017\"\n```",
+        "- Contenedor: Instancia de una imagen que se está ejecutando.",
+        "- Imagen: Plantilla inmutable de la cual se crean contenedores.",
+        "- Volúmenes: Usados para persistir datos entre contenedores."
+      ],
+      "Comandos útiles": [
+        "`docker build -t nombre_imagen .` - Construye una imagen a partir de un Dockerfile.",
+        "`docker run -d -p 8080:80 nombre_imagen` - Ejecuta un contenedor basado en una imagen.",
+        "`docker ps` - Muestra los contenedores en ejecución.",
+        "`docker stop <container_id>` - Detiene un contenedor.",
+        "`docker-compose up` - Levanta los contenedores definidos en un archivo docker-compose.yml.",
+        "`docker-compose down` - Detiene y elimina los contenedores y redes de un archivo docker-compose.yml."
+      ],
+      "Tips & extras": [
+        "✅ Usa docker-compose para manejar aplicaciones con múltiples contenedores (por ejemplo, un contenedor para la base de datos y otro para el backend).",
+        "✅ Usa volúmenes para persistir datos entre ejecuciones de contenedores.",
+        "✅ Utiliza Dockerfile multietapa para optimizar la construcción de imágenes, eliminando dependencias innecesarias al final del proceso.",
+        "✅ Considera usar Docker para desarrollo local con bases de datos, servidores web, etc., para emular el entorno de producción.",
+        "✅ Usa Docker Desktop para una experiencia más fácil de usar en macOS y Windows, que incluye la interfaz gráfica para manejar contenedores.",
+        "✅ Aprovecha las imágenes oficiales de Docker Hub para servicios populares como Node.js, Nginx, MongoDB, entre otros.",
+        "✅ Utiliza Docker Swarm o Kubernetes para orquestar contenedores a gran escala."
+      ]
+}

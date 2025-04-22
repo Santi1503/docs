@@ -1,0 +1,40 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Subir un proyecto existente:",
+        "1. Crea un nuevo repositorio en https://github.com.",
+        "2. En tu terminal:",
+        "```bash\ngit init\ngit add .\ngit commit -m \"Primer commit\"\ngit branch -M main\ngit remote add origin https://github.com/usuario/repositorio.git\ngit push -u origin main\n```",
+        "🟡 Clonar un repositorio existente:",
+        "```bash\ngit clone https://github.com/usuario/repositorio.git\n```"
+      ],
+      "Instalar librerías": [
+        "❌ GitHub no requiere librerías, pero sí necesitas tener Git instalado:",
+        "- Descárgalo en: https://git-scm.com/",
+        "- Verifica instalación: `git --version`"
+      ],
+      "Estructura básica": [
+        "- `.gitignore`: Ignora archivos/carpetas al subir al repo.",
+        "- `README.md`: Información y documentación del proyecto.",
+        "- `.github/workflows/`: Donde se colocan flujos de trabajo de GitHub Actions (CI/CD).",
+        "- Otros archivos típicos: `LICENSE`, `CONTRIBUTING.md`, etc.",
+        "```bash\n.git/\n.github/\n├── workflows/\n│   └── deploy.yml\nREADME.md\n.gitignore\n```"
+      ],
+      "Comandos útiles": [
+        "`git init` - Inicia un repositorio local.",
+        "`git clone URL` - Clona un repositorio remoto.",
+        "`git add .` - Agrega cambios al staging.",
+        "`git commit -m \"mensaje\"` - Crea un commit.",
+        "`git push` / `git pull` - Sube o descarga cambios.",
+        "`git status` - Muestra el estado actual.",
+        "`git log` - Historial de commits.",
+        "`git checkout -b nombre-rama` - Crea una nueva rama."
+      ],
+      "Tips & extras": [
+        "✅ Usa `.gitignore` para evitar subir `node_modules`, `.env`, etc.",
+        "✅ Agrega un `README.md` claro para mejorar la presentación de tu proyecto.",
+        "✅ Puedes usar GitHub Pages para alojar sitios estáticos.",
+        "✅ GitHub Actions te permite automatizar pruebas, despliegues y más.",
+        "✅ Los issues y pull requests son ideales para trabajo colaborativo.",
+        "✅ Puedes generar token de acceso personal (PAT) para integraciones seguras."
+      ]
+  }

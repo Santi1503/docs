@@ -1,0 +1,48 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Instalar Terraform en tu proyecto:",
+        "1. Descarga Terraform desde su [página oficial](https://www.terraform.io/downloads.html) y sigue las instrucciones para tu sistema operativo.",
+        "2. Verifica la instalación con el comando:",
+        "```bash\nterraform --version\n```",
+        "3. Inicializa tu proyecto Terraform en la carpeta donde deseas crear tu configuración de infraestructura:",
+        "```bash\nterraform init\n```",
+        "   Esto descargará los complementos necesarios y preparará tu entorno para usar Terraform."
+      ],
+      "Instalar librerías": [
+        "✅ No es necesario instalar librerías adicionales para usar Terraform en la mayoría de los casos.",
+        "1. Puedes usar proveedores adicionales si trabajas con servicios específicos, como AWS, Google Cloud, Azure, etc. Ejemplo:",
+        "```hcl\nprovider \"aws\" {\n  region = \"us-west-2\"\n}\n```",
+        "2. Si usas proveedores adicionales, instálalos automáticamente con el comando `terraform init`."
+      ],
+      "Estructura básica": [
+        "1. Archivo de configuración: Terraform usa archivos con extensión `.tf` para definir la infraestructura. Un archivo típico se ve así:",
+        "```hcl\nprovider \"aws\" {\n  region = \"us-west-2\"\n}\n\nresource \"aws_s3_bucket\" \"example\" {\n  bucket = \"my-unique-bucket-name\"\n}\n```",
+        "2. Inicialización de proyecto: Asegúrate de ejecutar `terraform init` en la raíz de tu proyecto para inicializar y preparar los archivos de configuración.",
+        "3. Planificación de cambios: Después de modificar la infraestructura, usa `terraform plan` para ver los cambios que se realizarán:",
+        "```bash\nterraform plan\n```",
+        "   Esto te mostrará qué recursos se agregarán, eliminarán o modificarán.",
+        "4. Aplicar cambios: Usa `terraform apply` para aplicar los cambios definidos en tu configuración:",
+        "```bash\nterraform apply\n```",
+        "   Confirmarás la ejecución antes de que se realicen cambios."
+      ],
+      "Comandos útiles": [
+        "`terraform init` - Inicializa el directorio de trabajo y descarga los complementos necesarios.",
+        "`terraform plan` - Muestra un plan detallado de los cambios que se aplicarán a la infraestructura.",
+        "`terraform apply` - Aplica los cambios a la infraestructura definidos en el archivo `.tf`.",
+        "`terraform destroy` - Destruye los recursos gestionados por Terraform.",
+        "`terraform validate` - Valida la sintaxis de los archivos de configuración de Terraform.",
+        "`terraform output` - Muestra los valores de salida definidos en la configuración de Terraform.",
+        "`terraform state list` - Muestra los recursos actuales en el estado de Terraform."
+      ],
+      "Tips & extras": [
+        "✅ Usar módulos: Para organizar y reutilizar configuraciones de infraestructura, utiliza módulos en Terraform.",
+        "   - Ejemplo:",
+        "```hcl\nmodule \"vpc\" {\n  source = \"terraform-aws-modules/vpc/aws\"\n  name   = \"my-vpc\"\n  cidr   = \"10.0.0.0/16\"\n}\n```",
+        "✅ Variables: Usa variables para hacer tu configuración más flexible y reutilizable.",
+        "   - Ejemplo de variable:",
+        "```hcl\nvariable \"region\" {\n  type    = string\n  default = \"us-west-2\"\n}\n\nprovider \"aws\" {\n  region = var.region\n}\n```",
+        "✅ Automatización con scripts: Puedes crear scripts de shell o bash para automatizar los procesos de Terraform como inicialización, aplicación y destrucción de infraestructura.",
+        "✅ Revisión de cambios: Antes de aplicar cambios, asegúrate de revisar siempre los cambios propuestos con `terraform plan`.",
+        "✅ Revisar estado de los recursos: Usa `terraform state show` para ver el estado actual de los recursos gestionados por Terraform."
+      ]
+  }

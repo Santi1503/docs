@@ -1,0 +1,62 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Instalar AWS CLI de forma local:",
+        "1. Para Linux (Ubuntu/Debian):",
+        "```bash\nsudo apt update\nsudo apt install awscli\n```",
+        "2. Para macOS:",
+        "- Instala AWS CLI usando Homebrew:",
+        "```bash\nbrew install awscli\n```",
+        "3. Para Windows:",
+        "- Descarga el instalador desde https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html y sigue las instrucciones.",
+        "4. Verifica la instalación con el siguiente comando:",
+        "```bash\naws --version\n```",
+        "5. Configura tus credenciales de AWS (requiere una cuenta AWS):",
+        "```bash\naws configure\n```",
+        "   - AWS Access Key ID: Proporcionada desde la consola de AWS.",
+        "   - AWS Secret Access Key: Proporcionada desde la consola de AWS.",
+        "   - Region: Región que usarás, como `us-east-1`.",
+        "   - Output format: El formato de salida, como `json`.",
+        "6. Para usar la consola web de AWS:",
+        "- Dirígete a [AWS Console](https://aws.amazon.com/console/).",
+        "- Inicia sesión con tu cuenta de AWS.",
+        "- Desde la consola, puedes administrar servicios como EC2, S3, Lambda, RDS, entre otros."
+      ],
+      "Instalar librerías": [
+        "✅ AWS SDK (Software Development Kit) se usa para interactuar con los servicios de AWS desde tu aplicación.",
+        "1. Para Node.js (JavaScript/TypeScript):",
+        "```bash\nnpm install aws-sdk\n```",
+        "2. Para Python (Boto3):",
+        "```bash\npip install boto3\n```",
+        "3. Para Java (AWS SDK for Java):",
+        "   - Descarga el SDK desde [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/).",
+        "4. Para otros lenguajes: Revisa la [documentación de AWS SDK](https://aws.amazon.com/tools/)."
+      ],
+      "Estructura básica": [
+        "- AWS CLI: Herramienta de línea de comandos que te permite interactuar con los servicios de AWS desde tu terminal.",
+        "- AWS SDK: Conjunto de bibliotecas que te permiten interactuar con AWS desde tu código.",
+        "- IAM (Identity and Access Management): Servicio de AWS que te permite gestionar usuarios y permisos.",
+        "- EC2 (Elastic Compute Cloud): Instancias de servidores virtuales en la nube.",
+        "- S3 (Simple Storage Service): Almacenamiento de objetos en la nube.",
+        "- Lambda: Funciones serverless que ejecutan código en respuesta a eventos sin gestionar servidores.",
+        "- Consola web de AWS: La interfaz gráfica de usuario para gestionar tus servicios de AWS de forma visual. Puedes acceder a ella en [AWS Console](https://aws.amazon.com/console/)."
+      ],
+      "Comandos útiles": [
+        "`aws s3 ls` - Lista los objetos en un bucket de S3.",
+        "`aws ec2 describe-instances` - Muestra información de las instancias EC2 en tu cuenta.",
+        "`aws lambda invoke --function-name MyFunction outputfile.txt` - Invoca una función Lambda.",
+        "`aws ec2 start-instances --instance-ids i-1234567890abcdef0` - Inicia una instancia EC2.",
+        "`aws ec2 stop-instances --instance-ids i-1234567890abcdef0` - Detiene una instancia EC2.",
+        "`aws sts get-caller-identity` - Muestra la identidad de la cuenta y el usuario actual."
+      ],
+      "Tips & extras": [
+        "✅ Utiliza IAM roles para gestionar permisos de acceso de forma más segura.",
+        "✅ Usa AWS Lambda para ejecutar código sin gestionar servidores. Perfecto para tareas de bajo consumo o eventos asincrónicos.",
+        "✅ Usa Amazon S3 para almacenar y servir archivos estáticos (imágenes, videos, etc.).",
+        "✅ Para desplegar aplicaciones, utiliza AWS Elastic Beanstalk, que gestiona la infraestructura por ti.",
+        "✅ AWS CloudFormation te permite automatizar la creación de recursos en AWS mediante plantillas.",
+        "✅ AWS Free Tier te permite utilizar ciertos servicios con límites gratuitos, ideal para experimentar o probar sin incurrir en costos.",
+        "✅ CloudWatch: Utiliza para monitorear y registrar logs de tus aplicaciones desplegadas en AWS.",
+        "✅ Revisa el AWS Marketplace para encontrar imágenes de máquinas virtuales (AMIs) preconfiguradas para tu aplicación.",
+        "✅ Consola web de AWS: Si prefieres usar una interfaz gráfica en lugar de la línea de comandos, puedes realizar todas las configuraciones y gestionar tus recursos directamente desde la consola web. Es ideal para ver y gestionar visualmente los recursos que has creado, como S3, EC2, Lambda, etc."
+      ]
+  }

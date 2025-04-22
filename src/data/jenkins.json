@@ -1,0 +1,40 @@
+{
+      "Inicializar proyecto": [
+        "🟢 Instalar Jenkins de forma local:",
+        "1. Descarga Jenkins desde https://www.jenkins.io/download/.",
+        "2. Para sistemas basados en Debian/Ubuntu, usa los siguientes comandos:",
+        "```bash\nsudo apt update\nsudo apt install openjdk-11-jdk\nwget -q -O - https://pkg.jenkins.io/jenkins.io.key | sudo apt-key add -\nsudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable/ all main > /etc/apt/sources.list.d/jenkins.list'\nsudo apt update\nsudo apt install jenkins\n```",
+        "3. Inicia Jenkins:",
+        "```bash\nsudo systemctl start jenkins\n```",
+        "4. Accede a Jenkins en tu navegador: http://localhost:8080",
+        "🟡 Iniciar Jenkins en Docker:",
+        "```bash\ndocker pull jenkins/jenkins:lts\ndocker run -p 8080:8080 jenkins/jenkins:lts\n```",
+        "5. Abre Jenkins en http://localhost:8080 y sigue las instrucciones para desbloquear."
+      ],
+      "Instalar librerías": [
+        "❌ Jenkins no tiene librerías externas como otras tecnologías, pero es importante instalar los plugins necesarios.",
+        "1. Accede a Jenkins y dirígete a Manage Jenkins > Manage Plugins.",
+        "2. En la pestaña Available, busca e instala los plugins que necesites (por ejemplo, Git, Docker, Maven)."
+      ],
+      "Estructura básica": [
+        "- Jenkinsfile: Archivo que define el flujo de trabajo de Jenkins (pipeline).",
+        "```groovy\npipeline {\n    agent any\n    stages {\n        stage('Build') {\n            steps {\n                echo 'Building...'\n            }\n        }\n        stage('Test') {\n            steps {\n                echo 'Testing...'\n            }\n        }\n    }\n}\n```",
+        "- Freestyle Projects: Tareas más simples sin el uso de Jenkinsfile.",
+        "- Pipelines: Proyectos más complejos que utilizan Jenkinsfile.",
+        "- Node (Agentes): Máquina donde Jenkins ejecuta las tareas."
+      ],
+      "Comandos útiles": [
+        "`jenkins start` - Inicia Jenkins (si está configurado como servicio).",
+        "`jenkins stop` - Detiene Jenkins (si está configurado como servicio).",
+        "`docker run jenkins/jenkins:lts` - Ejecuta Jenkins en un contenedor Docker.",
+        "`java -jar jenkins.war` - Inicia Jenkins localmente (si no se instaló como servicio)."
+      ],
+      "Tips & extras": [
+        "✅ Usa Jenkinsfile para versionar tu pipeline junto con el código fuente.",
+        "✅ Instala plugins como Docker Pipeline, GitHub y Pipeline para mejorar la integración.",
+        "✅ Configura Jenkins en Docker para evitar dependencias complicadas.",
+        "✅ Considera usar Jenkins Blue Ocean para una interfaz más moderna y amigable.",
+        "✅ Usa Declarative Pipelines para una sintaxis más estructurada y fácil de mantener.",
+        "✅ Configura la seguridad de Jenkins adecuadamente, especialmente en entornos de producción."
+      ]
+  }
