@@ -124,7 +124,7 @@ export default function Technology() {
     >
       {/* Sidebar */}
       <aside
-        className={`fixed md:relative z-40 top-0 left-0 h-screen w-64 bg-slate-900 p-6 border-r border-slate-700 transition-transform duration-300 transform ${
+        className={`fixed md:sticky z-40 top-0 left-0 h-screen w-64 bg-slate-900 p-6 border-r border-slate-700 transition-transform duration-300 transform ${
           showSidebar ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
